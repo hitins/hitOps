@@ -1,0 +1,13 @@
+# Limit for lan
+#
+## IP, eg lan ip "192.168.1.0/24"
+#add rule inet filter input ip saddr !=192.168.1.0/24 drop
+
+# Allow ports in
+#
+## tcp
+define TCP_PORTS = { 22, 443 } # such https, ssh, etc.
+add rule inet filter input tcp dport $TCP_PORTS ct state new limit rate 100/second accept comment "Avoid connection in brute force"
+## udp
+define UDP_PORTS= { 53 } #such dns, openvpn, etc.
+add rule inet filter input udp dport $UDP_PORTS ct state new limit rate 100/second accept comment "Avoid connection in brute force"

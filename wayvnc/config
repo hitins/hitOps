@@ -1,0 +1,14 @@
+address=0.0.0.0
+port=5900
+# relative current path is config file path
+use_relative_paths=true
+
+# Only enable_auth=true, options all below are valid
+enable_auth=true
+username=way
+password=go2wayvnc
+# tls pair
+private_key_file=key.pem
+certificate_file=cert.pem
+# rsa-aes
+rsa_private_key_file=rsa_wayvnc

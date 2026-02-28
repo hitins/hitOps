@@ -1,0 +1,140 @@
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 0, // Gaps between modules (0px)
+    "autohide": true,
+    "autohide-blocked": false,
+    "exclusive": true,
+
+    "modules-left": ["custom/appmenu", "clock", "wlr/taskbar"] ,
+    // sway "sway/workspaces", hyprland "hyprland/workspaces"
+    "modules-center": ["sway/workspaces" ],
+    "modules-right": ["cpu", "memory", "disk", "network"],
+
+    "custom/appmenu": {
+        	"format": "Menu 󰻀",
+        	"rotate": 0,
+        	"on-click": "wofi --show drun --allow-images true"
+    },
+
+    "wlr/taskbar": {
+        	"format": "{icon}",
+        	"tooltip": true,
+        	"tooltip-format": "{title}",
+        	"on-click": "activate",
+        	"on-click-middle": "close",
+        	"active-first": true
+    },
+
+    "sway/workspaces": {
+		"format": "{name} {icon}",
+		"format-icons": {
+			"default": "",
+     			"active": ""
+   		 },
+		"persistent-workspaces": {
+      			"*": [ 1, 2 ]
+    		},
+                "all-outputs": true,
+    		"show-special": true
+    },
+    
+    "clock": {
+        	"format": "{:%I:%M %p}",
+        	"rotate": 0,
+        	"format-alt": "{  %d·%m·%y}",
+        	"tooltip-format": "<span>{calendar}</span>",
+                "calendar": {
+                    //"mode"          : "year",
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                 },
+        	"actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                 }
+
+    },
+
+   "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "cpu": {
+		"format": "{usage}% {icon} ",
+       		"format-icons": [
+         		"<span color='#69ff94'>▁</span>", // green
+         		"<span color='#2aa9ff'>▂</span>", // blue
+         		"<span color='#f8f8f2'>▃</span>", // white
+         		"<span color='#f8f8f2'>▄</span>", // white
+        		"<span color='#ffffa5'>▅</span>", // yellow
+         		"<span color='#ffffa5'>▆</span>", // yellow
+          		"<span color='#ff9977'>▇</span>", // orange
+        		"<span color='#dd532e'>█</span>"  // red
+    		 ]
+    },
+
+    "memory": {
+        "format": "{}% 󰍛",
+	"tooltip-format": "RAM en uso: {used:0.1f} / {total:0.1f} ({percentage}%) "
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [ "" ]
+    },
+
+    "disk": {
+	"interval": 30,
+    	"unit": "GiB",
+    	"format": "{percentage_used}% ",
+        "tooltip-format": "Used: {used}\nEspacio libre: {free} / {total} ({percentage_free}%)"
+    },
+
+    "network": {
+	"rotate": 0,
+    	"format-disconnected": " ",
+        "format-ethernet": "{ifname} 󰈀",
+        "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+	"tooltip-format-wifi": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>",
+	"format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+	"interval": 10
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    }
+}
+

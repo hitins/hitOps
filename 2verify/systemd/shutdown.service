@@ -1,0 +1,11 @@
+# /etc/systemd/system/shutdown.service
+[Unit]
+Description = Extra shutdown service defined by user
+Before = halt.target reboot.target shutdown.target
+
+[Service]
+Type = oneshot
+ExecStart = /etc/systemd/system/shutdown
+
+[Install]
+WantedBy = multi-user.target

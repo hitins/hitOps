@@ -1,0 +1,10 @@
+# ~/.config/systemd/user/hyprland-startup.service
+[Unit]
+Description=Hyprland
+After=default.target
+
+[Service]
+ExecStart=hyprland
+
+[Install]
+WantedBy=default.target

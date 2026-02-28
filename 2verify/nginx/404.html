@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>404</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            min-height: 450px;
+            font-size: 32px;
+            font-weight: 500;
+            color: #5d7399;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .content {
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            background-color: #d2e1ec;
+            background-image: -webkit-linear-gradient(top, #bbcfe1 0%, #e8f2f6 80%);
+            background-image: linear-gradient(to bottom, #bbcfe1 0%, #e8f2f6 80%);
+            overflow: hidden;
+        }
+
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .main-text {
+            padding: 20vh 20px 0 20px;
+            text-align: center;
+            line-height: 2em;
+            font-size: 5vh;
+        }
+
+        .main-text h1 {
+            font-size: 45px;
+            line-height: 48px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-text-a {
+            height: 32px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .main-text-a a {
+            font-size: 16px;
+            text-decoration: none;
+            color: #0066CC;
+        }
+
+        .main-text-a a:hover {
+            color: #000;
+        }
+
+        .home-link {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.6;
+            border-bottom: 1px dashed rgba(93, 115, 153, 0.5);
+        }
+
+        .home-link:hover {
+            opacity: 1;
+        }
+
+        .ground {
+            height: 160px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #f6f9fa;
+        }
+
+        .ground:before, .ground:after {
+            content: '';
+            display: block;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: -62.5px;
+            z-index: -1;
+            background: transparent;
+            -webkit-transform: scaleX(0.2) rotate(45deg);
+            transform: scaleX(0.2) rotate(45deg);
+        }
+
+        .ground:after {
+            left: 50%;
+            margin-left: -166.66667px;
+        }
+
+        .ground:before {
+            right: 50%;
+            margin-right: -166.66667px;
+        }
+
+    </style>
+
+</head>
+
+<body translate="no">
+<div class="content">
+    <canvas class="snow" id="snow" width="1349" height="400"></canvas>
+    <div class="main-text">
+        <h1>404~<br><br>(灬ꈍ ꈍ灬)</h1>
+        <div class="main-text-a"><a href="#">Back Soon ...</a></div>
+    </div>
+    <div class="ground">
+    </div>
+</div>
+
+
+<script>
+    (function () {
+        function ready(fn) {
+            if (document.readyState != 'loading') {
+                fn();
+            } else {
+                document.addEventListener('DOMContentLoaded', fn);
+            }
+        }
+
+        function makeSnow(el) {
+            var ctx = el.getContext('2d');
+            var width = 0;
+            var height = 0;
+            var particles = [];
+
+            var Particle = function () {
+                this.x = this.y = this.dx = this.dy = 0;
+                this.reset();
+            }
+
+            Particle.prototype.reset = function () {
+                this.y = Math.random() * height;
+                this.x = Math.random() * width;
+                this.dx = (Math.random() * 1) - 0.5;
+                this.dy = (Math.random() * 0.5) + 0.5;
+            }
+
+            function createParticles(count) {
+                if (count != particles.length) {
+                    particles = [];
+                    for (var i = 0; i < count; i++) {
+                        particles.push(new Particle());
+                    }
+                }
+            }
+
+            function onResize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                el.width = width;
+                el.height = height;
+
+                createParticles((width * height) / 10000);
+            }
+
+            function updateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = '#f6f9fa';
+
+                particles.forEach(function (particle) {
+                    particle.y += particle.dy;
+                    particle.x += particle.dx;
+
+                    if (particle.y > height) {
+                        particle.y = 0;
+                    }
+
+                    if (particle.x > width) {
+                        particle.reset();
+                        particle.y = 0;
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, 5, 0, Math.PI * 2, false);
+                    ctx.fill();
+                });
+
+                window.requestAnimationFrame(updateParticles);
+            }
+
+            onResize();
+            updateParticles();
+        }
+
+        ready(function () {
+            var canvas = document.getElementById('snow');
+            makeSnow(canvas);
+        });
+    })();
+</script>
+
+</body>
+</html>

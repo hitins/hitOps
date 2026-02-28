@@ -1,0 +1,15 @@
+# /etc/systemd/system/startup.service
+[Unit]
+Description = Extra startup service defined by user
+After = sshd.service
+Requires = sshd.service
+
+[Service]
+TimeoutStopSec = 3
+Type = forking
+ExecStart = /etc/systemd/system/startup
+Restart = on-failure
+RestartSec = 10
+
+[Install]
+WantedBy = multi-user.target

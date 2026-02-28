@@ -1,0 +1,245 @@
+/* some style form https://github.com/soaddevgit/WaybarTheme */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: SauceCodePro Nerd Font Mono, FontAwesome;
+    font-size: 16px;
+    min-height: 10px;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+window#waybar {
+    background-color: rgba(34, 36, 54, 0.3);
+    border-radius: 0;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.1;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    text-shadow: none;
+    border: none;
+    border-radius: 10;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* === Modules Center === */
+#workspaces {
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin: 2px 6px;
+	padding: 0px 2px;
+}
+
+#workspaces button {
+  color: #B5E8E0;
+  background: transparent;
+  padding: 2px 4px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#workspaces button.active {
+	background: #AECCE6;
+	color: #89b4FA;
+	text-shadow: 0 0 4px #ABE9B3;
+}
+
+#workspaces button:hover {
+	color: #89b4FA;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 6px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 6px;
+}
+
+/* === Modules Left === */
+#custom-appmenu,
+#clock,
+#taskbar {
+	border-radius: 6px;
+	margin: 2px 2px;
+	padding: 0px 2px;
+}
+
+#custom-appmenu {
+	color: #89B4FA;
+	background: #161320;
+}
+
+#clock {
+	color: #242639;
+	background: #96CDFB;
+}
+
+#taskbar {
+  background: transparent;
+}
+
+#taskbar button {
+  margin: 0px 2px;
+  padding: 0px 2px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#taskbar button.active,
+#taskbar button:hover {
+  background: rgba(34, 36, 54, 0.5);
+}
+
+/* === Modules Right === */
+#battery,
+#backlight,
+#cpu,
+#disk,
+#idle_inhibitor,
+#language,
+#keyboard-state,
+#memory,
+#mode,
+#network,
+#power-profiles-daemon
+#pulseaudio,
+#pulseaudio-slider
+#scratchpad,
+#temperature {
+    margin: 2px 0px;
+    padding: 0 10px;
+    color: #ffffff;
+    transition: none;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+#backlight {
+    background-color: #90b1b1;
+}
+
+#cpu {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+#disk {
+    background-color: #964B00;
+}
+
+#idle_inhibitor {
+  color: #161320;
+  background: #B5E8E0;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    min-width: 16px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#memory {
+    background-color: #9b59b6;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#network {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #2980b9;
+    margin-right: 2px;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+#pulseaudio, 
+#pulseaudio-slider {
+  min-width: 50px;
+  color: #1A1826;
+  background: #F5E0DC;
+}
+
+#pulseaudio-slider {
+  background: #E8A2AF;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
